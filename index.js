@@ -30,7 +30,10 @@ const server = app.listen(port, () => {
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:3000",
+    origin:
+      process.env.NODE_ENV !== "production"
+        ? "http://localhost:3000"
+        : "https://chat-app-frontend-1-seven.vercel.app/",
   },
 });
 
