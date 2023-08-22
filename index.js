@@ -37,6 +37,8 @@ const io = require("socket.io")(server, {
   },
 });
 
+console.log("_______________env => "+process.env.NODE_ENV);
+
 io.on("connection", (socket) => {
   console.log("connected to socket.io");
 
@@ -59,6 +61,9 @@ io.on("connection", (socket) => {
   });
 
   socket.on("new message", (message) => {
+    
+    console.log("_______________message => " + message);
+
     var chat = message.chat;
 
     if (!chat.users) return console.log("chat.users not defined");
@@ -66,6 +71,7 @@ io.on("connection", (socket) => {
     chat.users.forEach((user) => {
       if (user._id === message?.sender?._id) return;
       socket.in(user._id).emit("message received", message);
+    console.log("_______________message recieved => " + message);
     });
   });
 
