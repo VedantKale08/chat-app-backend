@@ -33,7 +33,7 @@ const io = require("socket.io")(server, {
     origin:
       process.env.NODE_ENV != "production"
         ? "http://localhost:3000"
-        : "https://chat-app-frontend-1-seven.vercel.app/",
+        : "https://chat-app-frontend-1-seven.vercel.app",
   },
 });
 
@@ -41,7 +41,7 @@ console.log("_______________env => "+process.env.NODE_ENV);
 console.log(
   process.env.NODE_ENV != "production"
     ? "http://localhost:3000"
-    : "https://chat-app-frontend-1-seven.vercel.app/"
+    : "https://chat-app-frontend-1-seven.vercel.app"
 );
 
 io.on("connection", (socket) => {
