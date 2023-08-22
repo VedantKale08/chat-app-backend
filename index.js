@@ -38,6 +38,11 @@ const io = require("socket.io")(server, {
 });
 
 console.log("_______________env => "+process.env.NODE_ENV);
+console.log(
+  "_______________url => " + process.env.NODE_ENV != "production"
+    ? "http://localhost:3000"
+    : "https://chat-app-frontend-1-seven.vercel.app/"
+);
 
 io.on("connection", (socket) => {
   console.log("connected to socket.io");
