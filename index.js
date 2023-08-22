@@ -10,7 +10,7 @@ const messageRoutes = require("./routes/messageRoutes.js");
 const path = require("path");
 
 dotenv.config();
-const port = "3001" || process.env.PORT;
+const port = process.env.PORT || "3001";
 
 app.use(cors());
 app.use(express.json());
@@ -38,10 +38,9 @@ const io = require("socket.io")(server, {
 });
 
 console.log("_______________env => "+process.env.NODE_ENV);
-console.log(
-  "_______________url => " + process.env.NODE_ENV != "production"
-    ? "http://localhost:3000"
-    : "https://chat-app-frontend-1-seven.vercel.app/"
+console.log( process.env.NODE_ENV != "production"
+    ? "url => http://localhost:3000"
+    : "url => https://chat-app-frontend-1-seven.vercel.app/"
 );
 
 io.on("connection", (socket) => {
